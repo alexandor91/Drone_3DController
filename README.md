@@ -65,16 +65,16 @@ Line 247 to line 263 is the code for horizontal position control.\
 '''\
 velCmd.x = kpPosXY * (posCmd.x - pos.x);\
 velCmd.y = kpPosXY * (posCmd.y - pos.y);\
-float vel_norm = sqrt(velCmd.x * velCmd.x + velCmd.y * velCmd.y);\
+float vel_norm = sqrt(velCmd.x * velCmd.x + velCmd.y * velCmd.y);
  
 if (vel_norm > maxSpeedXY) {\
     velCmd.x = CONSTRAIN(velCmd.x, -velCmd.x * maxSpeedXY / vel_norm, velCmd.x * maxSpeedXY / vel_norm);\
     velCmd.y = CONSTRAIN(velCmd.y, -velCmd.y * maxSpeedXY / vel_norm, velCmd.y * maxSpeedXY / vel_norm);\
   }\
 accelCmd.x += kpPosXY * (posCmd.x - pos.x) + kpVelXY * (velCmd.x - vel.x);\
-accelCmd.y += kpPosXY * (posCmd.y - pos.y) + kpVelXY * (velCmd.y - vel.y);\
+accelCmd.y += kpPosXY * (posCmd.y - pos.y) + kpVelXY * (velCmd.y - vel.y);
 
-float accel_norm = sqrt(accelCmd.x * accelCmd.x + accelCmd.y * accelCmd.y);\
+float accel_norm = sqrt(accelCmd.x * accelCmd.x + accelCmd.y * accelCmd.y);
 
 if (accel_norm > maxAccelXY) {\
 	  accelCmd.x = CONSTRAIN(accelCmd.x, -accelCmd.x * maxAccelXY / accel_norm, accelCmd.x * maxAccelXY / accel_norm);\
@@ -87,10 +87,10 @@ Line 284 to line 291 for yaw control.\
 '''\
 yawCmd = fmodf(yawCmd, 2.0 * 3.1416f);\
 float yaw_error = yawCmd - yaw;\
-if (yaw_error > 3.1416f)
+if (yaw_error > 3.1416f)\
 	  yaw_error = yaw_error - (2.0f * 3.1416f);\
-else if (yaw_error < -3.1416f)
-	  yaw_error = yaw_error + (2.0f * 3.1416f);\
+else if (yaw_error < -3.1416f)\
+	  yaw_error = yaw_error + (2.0f * 3.1416f);
   
 yawRateCmd = kpYaw * yaw_error;\
 '''\
@@ -102,17 +102,17 @@ float l = L / sqrt(2);\
 float term_A = collThrustCmd;\
 float term_B = momentCmd[0]/ l;\
 float term_C = momentCmd[1] / l;\
-float term_D = -momentCmd[2] /kappa;\
+float term_D = -momentCmd[2] /kappa;
 
 float F0 = (term_A + term_B + term_C + term_D) / 4.0f; //front left\
 float F1 = (term_A + term_C - term_B - term_D) / 4.0f; //front right\
 float F2 = (term_A + term_B - term_C - term_D) / 4.0f; //rear left\
-float F3 = (term_A + term_D - term_B - term_C) / 4.0f; //rear right\
+float F3 = (term_A + term_D - term_B - term_C) / 4.0f; //rear right
 
 //printf("F0 force %f/n", term_A);\
 //printf("F1 force %f/n", term_B);\
 //printf("F2 force %f/n", term_C);\
-//printf("F3 force %f/n", term_D);\
+//printf("F3 force %f/n", term_D);
 
 cmd.desiredThrustsN[0] = CONSTRAIN(F0, minMotorThrust, maxMotorThrust);\
 cmd.desiredThrustsN[1] = CONSTRAIN(F1, minMotorThrust, maxMotorThrust);\
