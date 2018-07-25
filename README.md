@@ -13,6 +13,7 @@ This repository is established for the project 3 of Udacity "Flying car" nanodeg
 ---
 
 ## Code Implementation
+All the codes are included in the "QuadControl.cpp" file.
 ### 1. Bodyrate Controller
 The code corresponding to body control is from line 119 to line 128.\
 '''\
