@@ -18,18 +18,16 @@ This repository is established for the project 3 of Udacity "Flying car" nanodeg
 The code corresponding to body control is from line 119 to line 128.
 '''
 
-float p_error = pqrCmd[0] - pqr[0];
+float p_error = pqrCmd[0] - pqr[0];\
+float u_bar_p = Ixx * kpPQR[0] * p_error;\
 
-float u_bar_p = Ixx * kpPQR[0] * p_error;
+float q_error = pqrCmd[1] - pqr[1];\
+float u_bar_q = Iyy * kpPQR[1] * q_error;\
 
-float q_error = pqrCmd[1] - pqr[1];
+float r_error = pqrCmd[2] - pqr[2];\
+float u_bar_r = Izz * kpPQR[2] * r_error;\
 
-float u_bar_q = Iyy * kpPQR[1] * q_error;
-
-float r_error = pqrCmd[2] - pqr[2];
-float u_bar_r = Izz * kpPQR[2] * r_error;
-
-V3F momentCmd(u_bar_p, u_bar_q, u_bar_r);
+V3F momentCmd(u_bar_p, u_bar_q, u_bar_r);\
 '''
 Fron the code snippet above, it is obvious that the commanded moments are proportional to the difference of body rates, the intertia od the drone about each axis is also taken into account.
 ### 2. Roll Pitch Controller
