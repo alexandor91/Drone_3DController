@@ -17,7 +17,6 @@ This repository is established for the project 3 of Udacity "Flying car" nanodeg
 ### 1. Bodyrate Controller
 The code corresponding to body control is from line 119 to line 128.\
 '''
-
 float p_error = pqrCmd[0] - pqr[0];\
 float u_bar_p = Ixx * kpPQR[0] * p_error;
 
