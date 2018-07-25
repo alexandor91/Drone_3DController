@@ -53,7 +53,7 @@ float error = posZCmd - posZ;\
 float h_dot_cmd = kpPosZ * error + velZCmd;\
 h_dot_cmd = CONSTRAIN(h_dot_cmd, -maxAscentRate, maxDescentRate);\
 integratedAltitudeError += error * dt;\
-float acceleration_cmd = accelZCmd + kpVelZ * (h_dot_cmd - velZ) + KiPosZ * integratedAltitudeError;\
+float acceleration_cmd = accelZCmd + kpVelZ * (h_dot_cmd - velZ) + KiPosZ * integratedAltitudeError;
 
 float R33 = R(2,2);\
 thrust = mass * (9.81f - acceleration_cmd) / R33;\
